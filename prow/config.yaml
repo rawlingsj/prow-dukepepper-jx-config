@@ -228,5 +228,5 @@ tide:
     - needs-rebase
     repos:
     - rawlingsj/spring-prow1:
-  target_url: https://tide.foo.bar.io
+  target_url: https://tide.foo.bar.wine.io
 
