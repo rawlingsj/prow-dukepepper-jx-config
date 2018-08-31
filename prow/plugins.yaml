@@ -12,7 +12,6 @@ config_updater:
 plugins:
   rawlingsj/prow-dukepepper-jx-config:
   - config-updater
-  - shrug
   - skip
   - size
   - dog
