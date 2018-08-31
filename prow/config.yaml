@@ -4,7 +4,7 @@ pod_namespace: jx
 push_gateway: {}
 
 sinker:
-  resync_period: 77m
+  resync_period: 88m
   max_prowjob_age: 48h
   max_pod_age: 30m
 
