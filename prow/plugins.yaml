@@ -14,8 +14,6 @@ plugins:
   - config-updater
   - shrug
   - skip
-  - yuks
   - size
   - dog
   - cat
-  - heart
