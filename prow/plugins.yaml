@@ -15,4 +15,5 @@ plugins:
   - skip
   - size
   - dog
+  - heart
   - cat
