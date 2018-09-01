@@ -30,25 +30,25 @@ owners_dir_blacklist:
 prowjob_namespace: jx
 pod_namespace: jx
 
-# presubmits:
-#   rawlingsj/spring-prow1:
-#   - agent: build
-#     branches:
-#         - master
-#     cluster: ""
-#     context: ci
-#     labels: null
-#     max_concurrency: 0
-#     name: ci
-#     rerun_command: /test this
-#     run_after_success: null
-#     run_if_changed: ""
-#     skip_branches: null
-#     skip_report: false
-#     build_spec:
-#       steps:
-#       - image: rawlingsj/cwp-jenkinsfile-runner-demo:dev1
-#         trigger: (?m)^/test( all| this),?(\\s+|$)
+presubmits:
+  rawlingsj/spring-prow1:
+  - agent: build
+    branches:
+        - master
+    cluster: ""
+    context: ci
+    labels: null
+    max_concurrency: 0
+    name: ci
+    rerun_command: /test this
+    run_after_success: null
+    run_if_changed: ""
+    skip_branches: null
+    skip_report: false
+    build_spec:
+      steps:
+      - image: rawlingsj/cwp-jenkinsfile-runner-demo:dev1
+        trigger: (?m)^/test( all| this),?(\\s+|$)
     
 #   rawlingsj/environment-dukepepper-staging:
 #   - agent: kubernetes
