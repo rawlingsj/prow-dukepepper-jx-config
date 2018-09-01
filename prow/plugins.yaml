@@ -1,20 +1,68 @@
 triggers:
 - repos:
+  - rawlingsj/environment-dukepepper-staging
+  - rawlingsj/environment-dukepepper-production
   - rawlingsj/prow-dukepepper-jx-config
-
+  - rawlingsj/spring-prow1
+approve:
+- lgtm_acts_as_approve: true
+  repos:
+  - rawlingsj/spring-prow1
+  - rawlingsj/environment-dukepepper-staging
+  - rawlingsj/environment-dukepepper-production
+  review_acts_as_approve: true
+blunderbuss: {}
+cat: {}
 config_updater:
   maps:
     prow/config.yaml:
       name: config
     prow/plugins.yaml:
       name: plugins
-
+heart: {}
+owners: {}
 plugins:
   rawlingsj/prow-dukepepper-jx-config:
   - config-updater
+  - shrug
   - skip
+  - yuks
   - size
-  - dog
-  - heart
-  - cat
+  rawlingsj/spring-prow1:
   - approve
+  - assign
+  - blunderbuss
+  - help
+  - hold
+  - heart
+  - lgtm
+  - lifecycle
+  - size
+  - trigger
+  - wip
+  rawlingsj/environment-dukepepper-staging:
+  - approve
+  - assign
+  - blunderbuss
+  - help
+  - hold
+  - lgtm
+  - lifecycle
+  - size
+  - trigger
+  - wip
+  rawlingsj/environment-dukepepper-production:
+  - approve
+  - assign
+  - blunderbuss
+  - help
+  - hold
+  - lgtm
+  - lifecycle
+  - size
+  - trigger
+  - wip
+requiresig: {}
+sigmention: {}
+slack: {}
+welcome: {}
