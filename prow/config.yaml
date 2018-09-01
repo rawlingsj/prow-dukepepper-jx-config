@@ -46,8 +46,9 @@ presubmits:
     skip_branches: null
     skip_report: false
     build_spec:
+      serviceAccountName: jenkins
       steps:
-      - image: rawlingsj/cwp-jenkinsfile-runner-demo:dev1
+      - image: rawlingsj/cwp-jenkinsfile-runner-demo:dev3
         trigger: (?m)^/test( all| this),?(\\s+|$)
     
 #   rawlingsj/environment-dukepepper-staging:
