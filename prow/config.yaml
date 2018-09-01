@@ -231,4 +231,4 @@ tide:
     - rawlingsj/spring-prow1
     - rawlingsj/environment-dukepepper-staging
     - rawlingsj/environment-dukepepper-production
-  target_url: https://tide.foo.bar.wine.io
+  target_url: https://tide.foo.bar.io
