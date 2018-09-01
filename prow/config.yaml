@@ -50,6 +50,9 @@ presubmits:
       steps:
       - image: rawlingsj/cwp-jenkinsfile-runner-demo:dev3
         trigger: (?m)^/test( all| this),?(\\s+|$)
+        env:
+        - name: BRANCH_NAME
+          value: foo
     
 #   rawlingsj/environment-dukepepper-staging:
 #   - agent: kubernetes
