@@ -77,6 +77,8 @@ presubmits:
           value: PR-
         - name: DOCKER_CONFIG
           value: /home/jenkins/.docker/
+        - name: DOCKER_REGISTRY
+          value: 10.63.248.167:5000
         volumeMounts:
         - name: jenkins-docker-cfg
           mountPath: /home/jenkins/.docker
