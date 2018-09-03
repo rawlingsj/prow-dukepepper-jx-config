@@ -74,7 +74,7 @@ presubmits:
         trigger: (?m)^/test( all| this),?(\\s+|$)
         env:
         - name: BRANCH_NAME
-          value: PR-$BUILD_ID
+          value: PR-
         - name: DOCKER_CONFIG
           value: /home/jenkins/.docker/
         volumeMounts:
