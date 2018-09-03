@@ -74,7 +74,7 @@ presubmits:
         trigger: (?m)^/test( all| this),?(\\s+|$)
         env:
         - name: BRANCH_NAME
-          value: PR-
+          value: PR-foo
         - name: DOCKER_CONFIG
           value: /home/jenkins/.docker/
         - name: DOCKER_REGISTRY
