@@ -63,6 +63,12 @@ presubmits:
       - name: docker-sock-volume
         hostPath:
           path: /var/run/docker.sock
+      - name: jenkins-maven-settings
+        secret:
+          secretName: jenkins-maven-settings
+      - name: jenkins-release-gpg
+        secret:
+          secretName: jenkins-release-gpg
       steps:
       - image: jenkinsxio/jenkins-maven:dev_2
         trigger: (?m)^/test( all| this),?(\\s+|$)
@@ -77,7 +83,12 @@ presubmits:
           readOnly: true
         - mountPath: /var/run/docker.sock
           name: docker-sock-volume
-
+        - name: jenkins-maven-settings
+          mountPath: /root/.m2/
+          readOnly: true
+        - name: jenkins-release-gpg
+          mountPath: /home/jenkins/.gnupg
+          readOnly: true
     
 #   rawlingsj/environment-dukepepper-staging:
 #   - agent: kubernetes
