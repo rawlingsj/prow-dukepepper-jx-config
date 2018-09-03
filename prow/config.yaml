@@ -37,10 +37,6 @@ presubmits:
         - master
     cluster: ""
     context: ci
-    labels:
-      preset-docker-socket: "true"
-      preset-maven: "true"
-      preset-gpg: "true"
     max_concurrency: 0
     name: ci
     rerun_command: /test this
@@ -49,6 +45,10 @@ presubmits:
     skip_branches: null
     skip_report: false
     build_spec:
+      labels:
+        preset-docker-socket: "true"
+        preset-maven: "true"
+        preset-gpg: "true"
       serviceAccountName: jenkins
       steps:
       - image: jenkinsxio/jenkins-maven:dev_2
