@@ -37,6 +37,10 @@ presubmits:
         - master
     cluster: ""
     context: ci
+    labels:
+      preset-docker-socket: "true"
+      preset-maven: "true"
+      preset-gpg: "true"
     max_concurrency: 0
     name: ci
     rerun_command: /test this
