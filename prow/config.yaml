@@ -37,7 +37,10 @@ presubmits:
         - master
     cluster: ""
     context: ci
-    labels: null
+    labels:
+      preset-docker-socket: "true"
+      preset-maven: "true"
+      preset-gpg: "true"
     max_concurrency: 0
     name: ci
     rerun_command: /test this
@@ -48,11 +51,11 @@ presubmits:
     build_spec:
       serviceAccountName: jenkins
       steps:
-      - image: rawlingsj/cwp-jenkinsfile-runner-demo:dev3
+      - image: jenkinsxio/jenkins-maven:dev_2
         trigger: (?m)^/test( all| this),?(\\s+|$)
         env:
         - name: BRANCH_NAME
-          value: foo
+          value: PR-$BUILD_ID
     
 #   rawlingsj/environment-dukepepper-staging:
 #   - agent: kubernetes
@@ -236,3 +239,45 @@ tide:
     - rawlingsj/environment-dukepepper-staging
     - rawlingsj/environment-dukepepper-production
   target_url: https://tide.foo.bar.io
+
+presets:
+- labels:
+    preset-docker-socket: "true"
+  securityContext:
+    privileged: true
+  env:
+  - name: DOCKER_CONFIG
+    value: /home/jenkins/.docker/
+  volumeMounts:
+  - name: jenkins-docker-cfg
+    mountPath: /home/jenkins/.docker
+    readOnly: true
+  - mountPath: /var/run/docker.sock
+    name: docker-sock-volume
+  volumes:
+  - name: jenkins-docker-cfg
+    secret:
+      secretName: jenkins-docker-cfg
+  - name: docker-sock-volume
+    hostPath:
+      path: /var/run/docker.sock
+- labels:
+    preset-maven: "true"
+  volumeMounts:
+  - name: jenkins-maven-settings
+    mountPath: /root/.m2/
+    readOnly: true
+  volumes:
+  - name: jenkins-maven-settings
+    secret:
+      secretName: jenkins-maven-settings
+- labels:
+    preset-gpg: "true"
+  volumeMounts:
+  - name: jenkins-release-gpg
+    mountPath: /home/jenkins/.gnupg
+    readOnly: true
+  volumes:
+  - name: jenkins-release-gpg
+    secret:
+      secretName: jenkins-release-gpg
