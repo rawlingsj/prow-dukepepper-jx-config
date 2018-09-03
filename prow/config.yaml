@@ -54,12 +54,30 @@ presubmits:
         preset-maven: "true"
         preset-gpg: "true"
       serviceAccountName: jenkins
+      securityContext:
+        privileged: true
+      volumes:
+      - name: jenkins-docker-cfg
+        secret:
+          secretName: jenkins-docker-cfg
+      - name: docker-sock-volume
+        hostPath:
+          path: /var/run/docker.sock
       steps:
       - image: jenkinsxio/jenkins-maven:dev_2
         trigger: (?m)^/test( all| this),?(\\s+|$)
         env:
         - name: BRANCH_NAME
           value: PR-$BUILD_ID
+        - name: DOCKER_CONFIG
+          value: /home/jenkins/.docker/
+        volumeMounts:
+        - name: jenkins-docker-cfg
+          mountPath: /home/jenkins/.docker
+          readOnly: true
+        - mountPath: /var/run/docker.sock
+          name: docker-sock-volume
+
     
 #   rawlingsj/environment-dukepepper-staging:
 #   - agent: kubernetes
