@@ -75,6 +75,10 @@ presubmits:
         env:
         - name: BRANCH_NAME
           value: PR-123
+        - name: BUILD_NUMBER
+          value: "111"
+        - name: JOB_NAME
+          value: rawlingsj/spring-prow1/PR-123
         - name: DOCKER_CONFIG
           value: /home/jenkins/.docker/
         - name: DOCKER_REGISTRY
