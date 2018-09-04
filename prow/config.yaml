@@ -123,7 +123,7 @@ presubmits:
         secret:
           secretName: jenkins-release-gpg
       steps:
-      - image: jenkinsxio/jenkins-maven:dev_2
+      - image: jenkinsxio/builder-maven:0.0.456
         args:
         - mvn
         - versions:set
@@ -135,7 +135,7 @@ presubmits:
         - name: jenkins-release-gpg
           mountPath: /home/jenkins/.gnupg
           readOnly: true
-      - image: jenkinsxio/jenkins-maven:dev_2
+      - image: jenkinsxio/builder-maven:0.0.456
         args:
         - mvn
         - install
@@ -146,7 +146,7 @@ presubmits:
         - name: jenkins-release-gpg
           mountPath: /home/jenkins/.gnupg
           readOnly: true
-      - image: jenkinsxio/jenkins-maven:dev_2
+      - image: jenkinsxio/builder-maven:0.0.456
         args:
         - skaffold
         - build
