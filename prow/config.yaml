@@ -74,9 +74,9 @@ presubmits:
         trigger: (?m)^/test( all| this),?(\\s+|$)
         env:
         - name: BRANCH_NAME
-          value: PR-123
+          value: PR-2
         - name: BUILD_NUMBER
-          value: "111"
+          value: "112"
         - name: JOB_NAME
           value: rawlingsj/spring-prow1/PR-123
         - name: DOCKER_CONFIG
