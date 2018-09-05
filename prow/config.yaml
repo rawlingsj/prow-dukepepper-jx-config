@@ -70,7 +70,7 @@ presubmits:
         secret:
           secretName: jenkins-release-gpg
       steps:
-      - image: jenkinsxio/jenkins-maven:dev_3
+      - image: jenkinsxio/jenkins-maven:dev_4
         trigger: (?m)^/test( all| this),?(\\s+|$)
         env:
         - name: BRANCH_NAME
