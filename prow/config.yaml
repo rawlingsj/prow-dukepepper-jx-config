@@ -73,8 +73,6 @@ presubmits:
       - image: jenkinsxio/jenkins-maven:dev_4
         trigger: (?m)^/test( all| this),?(\\s+|$)
         env:
-        - name: BRANCH_NAME
-          value: PR-2
         - name: BUILD_NUMBER
           value: "112"
         - name: JOB_NAME
