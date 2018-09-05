@@ -70,7 +70,7 @@ presubmits:
         secret:
           secretName: jenkins-release-gpg
       steps:
-      - image: jenkinsxio/jenkins-maven:dev_4
+      - image: jenkinsxio/jenkins-maven:dev_6
         trigger: (?m)^/test( all| this),?(\\s+|$)
         env:
         - name: BUILD_NUMBER
