@@ -70,13 +70,9 @@ presubmits:
         secret:
           secretName: jenkins-release-gpg
       steps:
-      - image: jenkinsxio/jenkins-maven:dev_6
+      - image: jenkinsxio/jenkins-maven:dev_7
         trigger: (?m)^/test( all| this),?(\\s+|$)
         env:
-        - name: BUILD_NUMBER
-          value: "112"
-        - name: JOB_NAME
-          value: rawlingsj/spring-prow1/PR-123
         - name: DOCKER_CONFIG
           value: /home/jenkins/.docker/
         - name: DOCKER_REGISTRY
