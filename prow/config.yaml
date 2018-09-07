@@ -95,21 +95,22 @@ presubmits:
 
   rawlingsj/environment-dukepepper-staging:
   - agent: build
-    always_run: true
-    branches: null
+    branches:
+        - master
     cluster: ""
-    context: promotion-gate
-    labels: null
+    context:  promotion-gate
     max_concurrency: 0
-    name: promotion-gate
+    name:  promotion-gate
     rerun_command: /test this
     run_after_success: null
     run_if_changed: ""
     skip_branches: null
     skip_report: false
     build_spec:
+      serviceAccountName: jenkins
       steps:
-      - args:
+      - image: jenkinsxio/builder-base:latest
+        args:
         - jx
         - step
         - helm
@@ -129,11 +130,49 @@ presubmits:
           value: jenkins-x-bot
         - name: GIT_COMMITTER_NAME
           value: jenkins-x-bot
-        image: jenkinsxio/builder-base:latest
-        name: ""
-        resources: {}
-      serviceAccountName: jenkins
-    trigger: (?m)^/test( all| this),?(\s+|$)
+      trigger: (?m)^/test( all| this),?(\s+|$)
+
+  # //rawlingsj/environment-dukepepper-staging:
+  # - agent: build
+  #   always_run: true
+  #   branches: null
+  #   cluster: ""
+  #   context: promotion-gate
+  #   labels: null
+  #   max_concurrency: 0
+  #   name: promotion-gate
+  #   rerun_command: /test this
+  #   run_after_success: null
+  #   run_if_changed: ""
+  #   skip_branches: null
+  #   skip_report: false
+  #   build_spec:
+  #     steps:
+  #     - args:
+  #       - jx
+  #       - step
+  #       - helm
+  #       - build
+  #       env:
+  #       - name: DEPLOY_NAMESPACE
+  #         value: jx-staging
+  #       - name: CHART_REPOSITORY
+  #         value: http://jenkins-x-chartmuseum:8080
+  #       - name: XDG_CONFIG_HOME
+  #         value: /home/jenkins
+  #       - name: GIT_COMMITTER_EMAIL
+  #         value: jenkins-x@googlegroups.com
+  #       - name: GIT_AUTHOR_EMAIL
+  #         value: jenkins-x@googlegroups.com
+  #       - name: GIT_AUTHOR_NAME
+  #         value: jenkins-x-bot
+  #       - name: GIT_COMMITTER_NAME
+  #         value: jenkins-x-bot
+  #       image: jenkinsxio/builder-base:latest
+  #       name: ""
+  #       resources: {}
+  #     serviceAccountName: jenkins
+  #   trigger: (?m)^/test( all| this),?(\s+|$)
 
   # rawlingsj/environment-dukepepper-production:
   # - agent: build
