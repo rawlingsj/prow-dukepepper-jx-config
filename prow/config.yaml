@@ -70,7 +70,7 @@ presubmits:
         secret:
           secretName: jenkins-release-gpg
       steps:
-      - image: jenkinsxio/jenkins-maven:dev_8
+      - image: jenkinsxio/jenkins-maven:dev_10
         trigger: (?m)^/test( all| this),?(\\s+|$)
         env:
         - name: DOCKER_CONFIG
