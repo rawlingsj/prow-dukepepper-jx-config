@@ -32,7 +32,7 @@ pod_namespace: jx
 
 presubmits:
   rawlingsj/spring-prow1:
-  - agent: build
+  - agent: knative-build
     branches:
         - master
     cluster: ""
