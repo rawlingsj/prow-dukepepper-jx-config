@@ -70,7 +70,7 @@ presubmits:
         secret:
           secretName: jenkins-release-gpg
       steps:
-      - image: jenkinsxio/jenkins-maven:dev_8
+      - image: jenkinsxio/jenkins-maven:dev_10
         trigger: (?m)^/test( all| this),?(\\s+|$)
         env:
         - name: DOCKER_CONFIG
@@ -171,76 +171,76 @@ presubmits:
           value: jenkins-x-bot
       trigger: (?m)^/test( all| this),?(\s+|$)
 
-  postsubmits:
-    rawlingsj/environment-dukepepper-staging:
-    - agent: build
-      cluster: ""
-      context:  promotion
-      max_concurrency: 0
-      name:  promotion
-      run_after_success: null
-      skip_branches: null
-      skip_report: false
-      build_spec:
-        serviceAccountName: jenkins
-        steps:
-        - image: jenkinsxio/builder-base:latest
-          args:
-          - jx
-          - step
-          - helm
-          - apply
-          env:
-          - name: DEPLOY_NAMESPACE
-            value: jx-staging
-          - name: CHART_REPOSITORY
-            value: http://jenkins-x-chartmuseum:8080
-          - name: XDG_CONFIG_HOME
-            value: /home/jenkins
-          - name: GIT_COMMITTER_EMAIL
-            value: jenkins-x@googlegroups.com
-          - name: GIT_AUTHOR_EMAIL
-            value: jenkins-x@googlegroups.com
-          - name: GIT_AUTHOR_NAME
-            value: jenkins-x-bot
-          - name: GIT_COMMITTER_NAME
-            value: jenkins-x-bot
+  # postsubmits:
+  #   rawlingsj/environment-dukepepper-staging:
+  #   - agent: build
+  #     cluster: ""
+  #     context:  promotion
+  #     max_concurrency: 0
+  #     name:  promotion
+  #     run_after_success: null
+  #     skip_branches: null
+  #     skip_report: false
+  #     build_spec:
+  #       serviceAccountName: jenkins
+  #       steps:
+  #       - image: jenkinsxio/builder-base:latest
+  #         args:
+  #         - jx
+  #         - step
+  #         - helm
+  #         - apply
+  #         env:
+  #         - name: DEPLOY_NAMESPACE
+  #           value: jx-staging
+  #         - name: CHART_REPOSITORY
+  #           value: http://jenkins-x-chartmuseum:8080
+  #         - name: XDG_CONFIG_HOME
+  #           value: /home/jenkins
+  #         - name: GIT_COMMITTER_EMAIL
+  #           value: jenkins-x@googlegroups.com
+  #         - name: GIT_AUTHOR_EMAIL
+  #           value: jenkins-x@googlegroups.com
+  #         - name: GIT_AUTHOR_NAME
+  #           value: jenkins-x-bot
+  #         - name: GIT_COMMITTER_NAME
+  #           value: jenkins-x-bot
 
-    rawlingsj/environment-dukepepper-production:
-    - agent: build
-      cluster: ""
-      context:  promotion
-      max_concurrency: 0
-      name:  promotion
-      run_after_success: null
-      skip_branches: null
-      skip_report: false
-      build_spec:
-        serviceAccountName: jenkins
-        steps:
-        - image: jenkinsxio/builder-base:latest
-          args:
-          - jx
-          - step
-          - helm
-          - apply
-          env:
-          - name: DEPLOY_NAMESPACE
-            value: jx-staging
-          - name: CHART_REPOSITORY
-            value: http://jenkins-x-chartmuseum:8080
-          - name: XDG_CONFIG_HOME
-            value: /home/jenkins
-          - name: GIT_COMMITTER_EMAIL
-            value: jenkins-x@googlegroups.com
-          - name: GIT_AUTHOR_EMAIL
-            value: jenkins-x@googlegroups.com
-          - name: GIT_AUTHOR_NAME
-            value: jenkins-x-bot
-          - name: GIT_COMMITTER_NAME
-            value: jenkins-x-bot
+  #   rawlingsj/environment-dukepepper-production:
+  #   - agent: build
+  #     cluster: ""
+  #     context:  promotion
+  #     max_concurrency: 0
+  #     name:  promotion
+  #     run_after_success: null
+  #     skip_branches: null
+  #     skip_report: false
+  #     build_spec:
+  #       serviceAccountName: jenkins
+  #       steps:
+  #       - image: jenkinsxio/builder-base:latest
+  #         args:
+  #         - jx
+  #         - step
+  #         - helm
+  #         - apply
+  #         env:
+  #         - name: DEPLOY_NAMESPACE
+  #           value: jx-staging
+  #         - name: CHART_REPOSITORY
+  #           value: http://jenkins-x-chartmuseum:8080
+  #         - name: XDG_CONFIG_HOME
+  #           value: /home/jenkins
+  #         - name: GIT_COMMITTER_EMAIL
+  #           value: jenkins-x@googlegroups.com
+  #         - name: GIT_AUTHOR_EMAIL
+  #           value: jenkins-x@googlegroups.com
+  #         - name: GIT_AUTHOR_NAME
+  #           value: jenkins-x-bot
+  #         - name: GIT_COMMITTER_NAME
+  #           value: jenkins-x-bot
 
-  #   rawlingsj/spring-prow1:
+  # #   rawlingsj/spring-prow1:
   #   - agent: build
   #     branches:
   #       - master
